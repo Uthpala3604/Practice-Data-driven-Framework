@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -22,13 +23,14 @@ public class CorrectUsername {
     }
 
     @Test
-    public void loginWithCorrectUsername(){
+    @Parameters({"username","password"})
+    public void loginWithCorrectUsername(String uName, String pass){
 
         WebElement username = driver.findElement(By.xpath("//input[@name='username']"));
-        username.sendKeys("Admin");
+        username.sendKeys(uName);
 
         WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
-        password.sendKeys("dummyPass");
+        password.sendKeys(pass);
 
         driver.findElement(By.xpath("//button[@type='submit']")).click();
     }

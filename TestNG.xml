@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <suite name="Login Suite">
-    <test name="Login Test Cases">
+
+    <listeners>
+        <listener class-name="com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter"/>
+    </listeners>
+
+    <test name="BothCorrect">
+        <parameter name="username" value="Admin"/>
+        <parameter name="password" value="admin123"/>
         <classes>
             <class name="LoginTestCases.BothCorrect"/>
+        </classes>
+    </test>
+
+    <test name="BothIncorrect">
+        <parameter name="username" value="dummyAdmin"/>
+        <parameter name="password" value="dummyPass"/>
+        <classes>
             <class name="LoginTestCases.BothIncorrect"/>
+        </classes>
+    </test>
+
+    <test name="CorrectPassword">
+        <parameter name="username" value="dummyAdmin"/>
+        <parameter name="password" value="admin123"/>
+        <classes>
             <class name="LoginTestCases.CorrectPassword"/>
+        </classes>
+    </test>
+
+    <test name="CorrectUsername">
+        <parameter name="username" value="Admin"/>
+        <parameter name="password" value="dummyPass"/>
+        <classes>
             <class name="LoginTestCases.CorrectUsername"/>
         </classes>
     </test>
